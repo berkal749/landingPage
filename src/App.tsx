@@ -1,36 +1,29 @@
-import { DottedSurface } from './components/ui/DottedSurface'
-import { LogoAnimation } from './components/sections/LogoAnimation'
-
-
-
-
-
-import { useState } from 'react';
+import { DottedSurface } from '@/components/ui/dotted-surface'
+import { cn } from '@/lib/utils'
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(true);
-
   return (
-    <div
-      className={
-        darkMode
-          ? 'dark relative isolate min-h-screen overflow-hidden bg-black text-white'
-          : 'relative isolate min-h-screen overflow-hidden bg-white text-black'
-      }
-    >
-      {/* Background Canvas Effect */}
-      <DottedSurface isDark={darkMode} />
-
-      {/* Your Page Content */}
-      <main className="relative z-10 flex min-h-screen flex-col items-center justify-center">
-        <h1 className="text-5xl font-bold tracking-tight">Dotted Surface</h1>
-        <button 
-          onClick={() => setDarkMode(!darkMode)}
-          className="mt-6 rounded-md bg-zinc-800 px-4 py-2 text-sm text-white dark:bg-zinc-200 dark:text-black"
-        >
-          Toggle Theme
-        </button>
-      </main>
-    </div>
-  );
+    <main className="relative min-h-screen overflow-hidden bg-neutral-950 text-white">
+      <DottedSurface className="size-full">
+        <div className="absolute inset-0 flex items-center justify-center px-6">
+          <div
+            aria-hidden="true"
+            className={cn(
+              'pointer-events-none absolute -top-10 left-1/2 size-full -translate-x-1/2 rounded-full',
+              'bg-[radial-gradient(ellipse_at_center,var(--color-foreground)/10%,transparent_50%)]',
+              'blur-[30px]',
+            )}
+          />
+          <div className="relative z-10 text-center">
+            <p className="mb-3 font-mono text-xs uppercase tracking-[0.4em] text-white/60">
+              shadcn-ready component
+            </p>
+            <h1 className="font-mono text-4xl font-semibold sm:text-5xl">
+              Dotted Surface
+            </h1>
+          </div>
+        </div>
+      </DottedSurface>
+    </main>
+  )
 }

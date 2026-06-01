@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tailwindcss";
 
 :root {
   color-scheme: dark;
@@ -16,6 +15,20 @@ body {
     var(--surface);
   color: var(--on-surface);
   font-family: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 .logo-page {
