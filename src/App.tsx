@@ -1,10 +1,11 @@
 import { DottedSurface } from '@/components/ui/dotted-surface'
 import LogoAnimation from '@/components/sections/LogoAnimation'
+import PortfolioSection from '@/components/sections/PortfolioSection'
 import { cn } from '@/lib/utils'
 
 export default function App() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#131316] text-[#e4e1e5] selection:bg-[#ffb59e] selection:text-[#131316]">
+    <main className="relative min-h-screen bg-[#131316] text-[#e4e1e5] selection:bg-[#ffb59e] selection:text-[#131316]">
       <DottedSurface className="size-full" />
 
       <div
@@ -163,6 +164,8 @@ export default function App() {
             </div>
           </div>
         </section>
+
+        <PortfolioSection />
 
         <section id="about" className="border-t border-white/5 px-5 py-20 md:px-16 md:py-28">
           <div className="mx-auto max-w-[1440px]">
