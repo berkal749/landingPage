@@ -27,13 +27,17 @@ export function DottedSurface({ className, isDark = true, ...props }: DottedSurf
         scene.fog = new THREE.Fog(0xffffff, 2000, 10000);
 
         const camera = new THREE.PerspectiveCamera(60, width / height, 1, 10000);
-        camera.position.set(0, 355, 1220);
+        camera.position.set(0, 220, 1100);
+        camera.lookAt(0, 0, 0);
 
         const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
         // Cap pixel ratio at 2 to preserve performance on Retina/4K displays
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         renderer.setSize(width, height);
         renderer.setClearColor(scene.fog.color, 0);
+        renderer.domElement.style.display = 'block';
+        renderer.domElement.style.width = '100%';
+        renderer.domElement.style.height = '100%';
 
         containerRef.current.appendChild(renderer.domElement);
 
@@ -146,7 +150,7 @@ export function DottedSurface({ className, isDark = true, ...props }: DottedSurf
     return (
         <div
             ref={containerRef}
-            className={cn('pointer-events-none fixed inset-0 -z-10', className)}
+            className={cn('pointer-events-none fixed inset-0 z-0 overflow-hidden', className)}
             {...props}
         />
     );

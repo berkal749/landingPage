@@ -11,7 +11,13 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(true);
 
   return (
-    <div className={darkMode ? 'dark bg-black text-white' : 'bg-white text-black'}>
+    <div
+      className={
+        darkMode
+          ? 'dark relative isolate min-h-screen overflow-hidden bg-black text-white'
+          : 'relative isolate min-h-screen overflow-hidden bg-white text-black'
+      }
+    >
       {/* Background Canvas Effect */}
       <DottedSurface isDark={darkMode} />
 
