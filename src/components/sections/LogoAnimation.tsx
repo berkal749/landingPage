@@ -1,6 +1,13 @@
-export function LogoAnimation() {
+import type React from 'react'
+
+type LogoAnimationProps = {
+  className?: string
+  style?: React.CSSProperties
+}
+
+export function LogoAnimation({ className = '', style }: LogoAnimationProps) {
   return (
-    <section className="logo-stage" aria-label="Ana Agency logo animation">
+    <section className={`logo-stage ${className}`.trim()} style={style} aria-label="Ana Agency logo animation">
       <div className="logo-wrap">
         <svg
           className="logo-mark"

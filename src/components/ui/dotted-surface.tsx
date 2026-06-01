@@ -25,6 +25,7 @@ export function DottedSurface({ className, children, ...props }: DottedSurfacePr
 		const SEPARATION = 150;
 		const AMOUNTX = 40;
 		const AMOUNTY = 60;
+		const BASE_Y = -320;
 
 		const scene = new THREE.Scene();
 		scene.fog = new THREE.Fog(0xffffff, 2000, 10000);
@@ -58,7 +59,7 @@ export function DottedSurface({ className, children, ...props }: DottedSurfacePr
 				const y = 0;
 				const z = iy * SEPARATION - (AMOUNTY * SEPARATION) / 2;
 
-				positions.push(x, y, z);
+				positions.push(x, BASE_Y + y, z);
 				if (theme === 'dark') {
 					colors.push(200, 200, 200);
 				} else {
@@ -95,6 +96,7 @@ export function DottedSurface({ className, children, ...props }: DottedSurfacePr
 				for (let iy = 0; iy < AMOUNTY; iy++) {
 					const index = i * 3;
 					positions[index + 1] =
+						BASE_Y +
 						Math.sin((ix + count) * 0.3) * 50 +
 						Math.sin((iy + count) * 0.5) * 50;
 					i++;
@@ -156,7 +158,15 @@ export function DottedSurface({ className, children, ...props }: DottedSurfacePr
 			className={cn('pointer-events-none fixed inset-0 overflow-hidden', className)}
 			{...props}
 		>
-			<div className="relative z-10 pointer-events-auto">{children}</div>
+			<div
+				aria-hidden="true"
+				className="absolute inset-0 z-[1]"
+				style={{
+					background:
+						'linear-gradient(to bottom, var(--surface) 0%, var(--surface) 18%, rgba(19, 19, 22, 0.92) 34%, rgba(19, 19, 22, 0.4) 56%, transparent 78%)',
+				}}
+			/>
+			<div className="absolute inset-0 z-10 pointer-events-auto">{children}</div>
 		</div>
 	);
 }

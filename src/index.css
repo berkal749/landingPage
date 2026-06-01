@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -54,14 +55,14 @@ body {
 .logo-stage {
   position: relative;
   z-index: 1;
-  min-height: 100vh;
+  min-height: auto;
   display: grid;
   place-items: center;
-  padding: 20px;
+  padding: 12px;
 }
 
 .logo-wrap {
-  width: min(72vmin, 740px);
+  width: min(24vmin, 200px);
   aspect-ratio: 1;
   display: grid;
   place-items: center;
@@ -194,7 +195,7 @@ body {
 
 @media (max-width: 640px) {
   .logo-wrap {
-    width: min(86vmin, 520px);
+    width: min(42vmin, 170px);
   }
 }
 
